@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft } from "lucide-react";
+import { ChevronsLeft } from "lucide-react";
 
 export const Navigation = () => {
   return (
@@ -10,7 +10,7 @@ export const Navigation = () => {
           role="button"
           className="h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition"
         >
-          <ChevronLeft className="h-6 w-6" />
+          <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
           <p>Action items</p>
