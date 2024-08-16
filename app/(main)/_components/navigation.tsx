@@ -3,7 +3,13 @@
 import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
 import { useMutation, useQuery } from "convex/react";
-import { ChevronsLeft, MenuIcon, PlusCircle, Search } from "lucide-react";
+import {
+  ChevronsLeft,
+  MenuIcon,
+  PlusCircle,
+  Search,
+  Settings2,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -140,9 +146,18 @@ export const Navigation = () => {
             label="Search"
             icon={Search}
             isSearch
-            onClick={() => {}}
+            onClick={() => { }}
           />
-          <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
+          <Item
+            label="Settings"
+            icon={Settings2}
+            onClick={() => { }}
+          />
+          <Item
+            onClick={handleCreate}
+            label="New Page"
+            icon={PlusCircle}
+          />
         </div>
         <div className="mt-4">
           {documents?.map((document) => (
