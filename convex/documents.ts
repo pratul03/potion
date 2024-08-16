@@ -1,7 +1,7 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
-export const sideBar = query({
+export const getSideBar = query({
   args: {
     parentDocument: v.optional(v.id("documents")),
   },
