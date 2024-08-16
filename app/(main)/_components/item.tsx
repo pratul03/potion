@@ -70,3 +70,13 @@ export const Item = ({
     </div>
   );
 };
+
+Item.Skeleton = function ItemSkeleton({ level }: { level?: number }) {
+  return (
+    <div
+      style={{
+        paddingLeft: level ? `${level * 12 + 12}px` : "12px",
+      }}
+    ></div>
+  );
+};
