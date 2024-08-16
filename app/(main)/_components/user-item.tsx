@@ -62,7 +62,7 @@ const UserItem = () => {
           <SignOutButton>
             <Button
               variant="ghost"
-              className="hover:bg-red-600/30 rounded-md hover:text-red-500"
+              className="hover:bg-red-600/30 rounded-md hover:text-red-500 transition-all duration-100 ease-in-out"
             >
               Log out
             </Button>
