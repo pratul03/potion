@@ -1,9 +1,19 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
-import { ChevronDown, ChevronRight, Command, LucideIcon } from "lucide-react";
+import { useMutation } from "convex/react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Command,
+  LucideIcon,
+  Plus,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface ItemProps {
   id?: Id<"documents">;
@@ -30,6 +40,37 @@ export const Item = ({
   onExpand,
   expanded,
 }: ItemProps) => {
+  const handleExpand = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    onExpand?.();
+  };
+  const create = useMutation(api.documents.create);
+  const router = useRouter();
+  const onCreate = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+    if (!id) return;
+    const promise = create({ title: "Untitled", parentDocument: id }).then(
+      (documentId) => {
+        if (!expanded) {
+          onExpand?.();
+        }
+        router.push(`/documents/${documentId}`);
+      }
+    );
+    toast.promise(promise, {
+      unstyled: false,
+      duration: 500,
+      classNames: {
+        error: "bg-red-400/40 text-red-600",
+        success: "text-green-600 bg-green-400/40",
+      },
+      loading: "Creating new note..",
+      success: "New note created!",
+      error: "something went wrong!",
+    });
+  };
   const ChevronIcon = expanded ? ChevronDown : ChevronRight;
 
   return (
@@ -48,7 +89,7 @@ export const Item = ({
         <div
           role="button"
           className="h-full rounded-sm hover:bg-neutral-300 dark:bg-neutral-600 mr-1"
-          onClick={() => {}}
+          onClick={handleExpand}
         >
           <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
         </div>
@@ -67,6 +108,17 @@ export const Item = ({
           </span>
           K
         </kbd>
+      )}
+      {!!id && (
+        <div
+          role="button"
+          onClick={onCreate}
+          className="ml-auto flex items-center gap-x-2">
+          <div className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+          >
+            <Plus className="h-4 w-4 text-muted-foreground" />
+          </div>
+        </div>
       )}
     </div>
   );
