@@ -34,7 +34,7 @@ interface ItemProps {
   level?: number;
   onExpand?: () => void;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   icon: LucideIcon;
 }
 
@@ -71,7 +71,7 @@ export const Item = ({
       duration: 500,
       classNames: {
         error: "bg-red-400/40 text-red-600",
-        success: "text-green-600 bg-green-400/40",
+        success: "text-yellow-600 bg-yellow-400/40",
       },
       loading: "Moving to trash",
       success: "Note moved to trash!",
