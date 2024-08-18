@@ -162,7 +162,7 @@ export const Item = ({
             >
               <DropdownMenuItem
                 onClick={onArchive}
-                className="text-muted-foreground hover:bg-red-300/40 hover:text-red-500 cursor-pointer"
+                className="text-muted-foreground cursor-pointer hover:bg-red-300/40 hover:text-red-500"
               >
                 <Trash className="h-4 w-4 mr-2" />
                 Move to Trash
