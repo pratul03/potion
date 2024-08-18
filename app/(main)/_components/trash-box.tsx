@@ -6,10 +6,9 @@ import { Input } from "@/components/ui/input";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
-import { Search, Trash } from "lucide-react";
+import { FileClock, Search, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import { MdRestorePage } from "react-icons/md";
 import { toast } from "sonner";
 
 export const TrashBox = () => {
@@ -99,18 +98,18 @@ export const TrashBox = () => {
             <span className="truncate pl-2">{document.title}</span>
             <div className="flex items-center">
               <div
-                className="rounded-sm p-2 hover:bg-neutral-200"
+                className="rounded-sm p-2 hover:bg-green-400/30  transition-all"
                 role="button"
                 onClick={(e) => onRestore(e, document._id)}
               >
-                <MdRestorePage className="h-4 w-4 text-muted-foreground" />
+                <FileClock className="h-4 w-4 text-muted-foreground hover:text-green-600" />
               </div>
               <ConfirmModal onConfirm={() => onRemove(document._id)}>
                 <div
-                  className="rounded-sm p-2 hover:bg-neutral-200"
+                  className="rounded-sm p-2 hover:bg-red-300/30"
                   role="button"
                 >
-                  <Trash className="h-4 w-4 text-muted-foreground" />
+                  <Trash className="h-4 w-4 text-muted-foreground hover:text-red-400" />
                 </div>
               </ConfirmModal>
             </div>

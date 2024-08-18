@@ -19,15 +19,12 @@ interface ConfirmModalProps {
 }
 
 export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
-
-
-    const handleConfirm = (
+  const handleConfirm = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        event.stopPropagation();
-        onConfirm();
-
-    }
+  ) => {
+    event.stopPropagation();
+    onConfirm();
+  };
   return (
     <AlertDialog>
       <AlertDialogTrigger onClick={(e) => e.stopPropagation()} asChild>
@@ -39,15 +36,21 @@ export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
           <AlertDialogDescription>
             The file will be deleted permanently.
           </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                  <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
-                      Cancel
-                  </AlertDialogCancel>
-                  <AlertDialogAction onClick={handleConfirm}>
-                      Confirm
-                  </AlertDialogAction>
-              </AlertDialogFooter>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel
+            onClick={(e) => e.stopPropagation()}
+            className="hover:bg-blue-500/30 hover:text-blue-600"
+          >
+            Cancel
+          </AlertDialogCancel>
+          <AlertDialogAction
+            onClick={handleConfirm}
+            className="outline outline-neutral-200 outline-1 bg-transparent text-black hover:text-red-600 hover:bg-red-400/40"
+          >
+            Confirm
+          </AlertDialogAction>
+        </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
