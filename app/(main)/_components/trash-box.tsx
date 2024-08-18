@@ -1,5 +1,6 @@
 "use client";
 
+import { ConfirmModal } from "@/components/modals/confirm-modal";
 import { Spinner } from "@/components/spinner";
 import { Input } from "@/components/ui/input";
 import { api } from "@/convex/_generated/api";
@@ -104,13 +105,14 @@ export const TrashBox = () => {
               >
                 <MdRestorePage className="h-4 w-4 text-muted-foreground" />
               </div>
-              <div
-                className="rounded-sm p-2 hover:bg-neutral-200"
-                role="button"
-                onClick={() => { }}
-              >
-                <Trash className="h-4 w-4 text-muted-foreground" />
-              </div>
+              <ConfirmModal onConfirm={() => onRemove(document._id)}>
+                <div
+                  className="rounded-sm p-2 hover:bg-neutral-200"
+                  role="button"
+                >
+                  <Trash className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </ConfirmModal>
             </div>
           </div>
         ))}
