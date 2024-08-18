@@ -160,9 +160,12 @@ export const Item = ({
               side="right"
               forceMount
             >
-              <DropdownMenuItem onClick={onArchive}>
+              <DropdownMenuItem
+                onClick={onArchive}
+                className="text-muted-foreground hover:bg-red-300/40 hover:text-red-500 cursor-pointer"
+              >
                 <Trash className="h-4 w-4 mr-2" />
-                Delete
+                Move to Trash
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <div className="text-sm p-2 text-muted-foreground">
