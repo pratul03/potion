@@ -1,4 +1,5 @@
 import { ConvexClientProvider } from "@/components/provider/convex-provider";
+import { ModalProvider } from "@/components/provider/modal-provider";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -43,6 +44,7 @@ export default function RootLayout({
             storageKey="potion-theme"
           >
             <Toaster position="bottom-center" />
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>

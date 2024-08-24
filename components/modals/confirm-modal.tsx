@@ -46,7 +46,7 @@ export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={handleConfirm}
-            className="outline outline-neutral-200 outline-1 bg-transparent text-black hover:text-red-600 hover:bg-red-400/40"
+            className="outline outline-neutral-200 outline-1 bg-transparent text-black hover:text-red-600 hover:bg-red-400/40 dark:text-white dark:hover:text-red-600 dark:hover:bg-red-400 dark:hover:outline-none"
           >
             Confirm
           </AlertDialogAction>
