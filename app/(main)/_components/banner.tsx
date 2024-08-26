@@ -40,10 +40,11 @@ const Banner = ({ documentId }: BannerProps) => {
 
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
       classNames: {
         error: "bg-red-400/40 text-red-600",
-        success: "text-blue-600 bg-blue-400/40",
+        success:
+          "text-blue-500 bg-blue-400/30 mb-5 dark:border-none transition-all ease-linear",
       },
       loading: "Restoring note..",
       success: "Note restored!",
@@ -51,7 +52,7 @@ const Banner = ({ documentId }: BannerProps) => {
     });
   };
   return (
-    <div className="w-full bg-slate-200/30 text-center justify-center text-sm p-2 text-rose-500 flex items-center gap-x-2 font-semibold dark:text-orange-600 dark:bg-white/5 overflow-hidden">
+    <div className="w-full bg-slate-300/30 text-center justify-center text-sm p-2 text-red-500 flex items-center gap-x-2 font-semibold dark:text-red-600 dark:bg-slate-900/30 overflow-hidden tracking-wider">
       <p>This page is in the Trash-Box.</p>
       <Button
         size="sm"
