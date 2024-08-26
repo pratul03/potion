@@ -124,10 +124,10 @@ export const Navigation = () => {
 
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
       classNames: {
-        error: "bg-red-400/40 text-red-600",
-        success: "text-green-600 bg-green-400/40",
+        error: "bg-red-400/40 text-red-600 dark:border-none mb-5",
+        success: "text-green-600 bg-green-400/40 dark:border-none mb-5",
       },
       loading: "Creating new note..",
       success: "New note created!",

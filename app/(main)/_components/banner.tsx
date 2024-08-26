@@ -23,10 +23,10 @@ const Banner = ({ documentId }: BannerProps) => {
 
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
       classNames: {
-        error: "bg-red-400/40 text-red-600",
-        success: "text-orange-600 bg-orange-400/40",
+        error: "bg-red-400/40 text-red-600 mb-5",
+        success: "text-red-500 bg-orange-400/30 dark:border-none mb-5",
       },
       loading: "Removing note..",
       success: "Note removed!",

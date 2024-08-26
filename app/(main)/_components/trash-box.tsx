@@ -36,10 +36,11 @@ export const TrashBox = () => {
     const promise = restore({ id: documentId });
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
       classNames: {
         error: "bg-red-400/40 text-red-600",
-        success: "text-blue-600 bg-blue-400/40",
+        success:
+          "text-blue-600 bg-blue-400/40 dark:text-blue-500 dark:border-none dark:bg-blue-300/30 text-medium font-lg",
       },
       loading: "Restoring note..",
       success: "Note restored!",
@@ -50,10 +51,12 @@ export const TrashBox = () => {
     const promise = remove({ id: documentId });
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
+      position: "bottom-left",
       classNames: {
-        error: "bg-red-400/40 text-red-600",
-        success: "text-orange-600 bg-orange-400/40",
+        error: "bg-red-400/40 text-red-600 mb-4",
+        success:
+          "text-red-600 bg-red-400/40 dark:border-none dark:bg-red-300/30 font-semibold text-md dark:text-red-500 mb-5",
       },
       loading: "Removing note..",
       success: "Note removed!",

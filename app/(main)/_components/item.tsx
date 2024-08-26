@@ -68,10 +68,10 @@ export const Item = ({
     const promise = archive({ id });
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
       classNames: {
-        error: "bg-red-400/40 text-red-600",
-        success: "text-yellow-600 bg-yellow-400/40",
+        error: "bg-red-400/40 text-red-600 mb-5 dark:border-none",
+        success: "text-red-500 bg-red-400/30 sm:mb-5 dark:border-none",
       },
       loading: "Moving to trash",
       success: "Note moved to trash!",
@@ -91,10 +91,10 @@ export const Item = ({
     );
     toast.promise(promise, {
       unstyled: false,
-      duration: 500,
+      duration: 700,
       classNames: {
-        error: "bg-red-400/40 text-red-600",
-        success: "text-green-600 bg-green-400/40",
+        error: "bg-red-400/40 text-red-600 mb-5 dark:border-none",
+        success: "text-green-500 bg-green-400/30 mb-5 dark:border-none",
       },
       loading: "Creating new note..",
       success: "New note created!",
