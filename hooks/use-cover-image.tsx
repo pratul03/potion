@@ -9,6 +9,7 @@ type CoverImageStore = {
 };
 
 export const useCoverImage = create<CoverImageStore>((set) => ({
+  url: undefined,
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false, url: undefined }),
