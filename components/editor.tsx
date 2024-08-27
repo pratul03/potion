@@ -11,10 +11,9 @@ import { useEffect } from "react";
 interface EditorProps {
   onChange: (value: string) => void;
   initialContent?: string;
-  editable?: boolean;
 }
 
-export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
+export const Editor = ({ onChange, initialContent }: EditorProps) => {
   const { resolvedTheme } = useTheme();
 
   // Create the editor instance
