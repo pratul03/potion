@@ -8,6 +8,7 @@ import { ElementRef, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { IconPicker } from "./icon-icker";
 import { Button } from "./ui/button";
+import { useCoverImage } from "@/hooks/use-cover-image";
 
 interface ToolbarProps {
   initialData: Doc<"documents">;
@@ -33,7 +34,7 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
   };
 
   const disableInput = () => setIsEditing(false);
-
+  const coverImage = useCoverImage();
   const onInput = (value: string) => {
     setValue(value);
     update({
@@ -97,7 +98,7 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
         )}
         {!initialData.coverImage && !preview && (
           <Button
-            onClick={() => {}}
+            onClick={coverImage.onOpen}
             className="to-muted-foreground text-xs"
             variant="outline"
             size="sm"
