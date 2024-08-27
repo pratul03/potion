@@ -8,6 +8,7 @@ import { useEdgeStore } from "@/lib/edgestore";
 import { useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import { SingleImageDropzone } from "../single-image-dropzone";
 
 export const CoverImageModal = () => {
   const coverImage = useCoverImage();
@@ -30,6 +31,8 @@ export const CoverImageModal = () => {
         id: params.documentId as Id<"documents">,
         coverImage: res.url,
       });
+
+      onClose();
     }
   };
 
@@ -44,7 +47,12 @@ export const CoverImageModal = () => {
         <DialogHeader>
           <h2 className="text-center text-lg font-semibold">Cover Image</h2>
         </DialogHeader>
-        <div>TODO: Upload Image.</div>
+        <SingleImageDropzone
+          className="w-full outline-none"
+          disabled={isSubmitting}
+          value={file}
+          onChange={onChange}
+        />
       </DialogContent>
     </Dialog>
   );
