@@ -1,5 +1,6 @@
 "use client";
 
+import Error from "@/app/error";
 import { Cover } from "@/components/cover";
 import { Toolbar } from "@/components/toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -7,7 +8,6 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 
 interface DocumentIdProps {
@@ -24,8 +24,7 @@ const DocumentIdPage = ({ params }: DocumentIdProps) => {
     []
   );
   const update = useMutation(api.documents.update);
-  const router = useRouter();
-
+  
   const onChange = (content: string) => {
     update({
       id: params.documentId,
@@ -50,8 +49,7 @@ const DocumentIdPage = ({ params }: DocumentIdProps) => {
   }
 
   if (document === null || !document.isPublished) {
-    router.push("/error"); // Redirects to the error page
-    return null;
+    return <Error />;
   }
   return (
     <div className="pb-40">
