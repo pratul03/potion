@@ -113,6 +113,14 @@ export const Publish = ({ initialData }: PublishProp) => {
                 )}
               </Button>
             </div>
+            <Button
+              className="w-full text-xs"
+              size="sm"
+              disabled={isSubmitting}
+              onClick={onUnPublish}
+            >
+              Unpublish
+            </Button>
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center">
