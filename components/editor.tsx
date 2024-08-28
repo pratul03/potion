@@ -14,21 +14,28 @@ interface EditorProps {
   editable?: boolean;
 }
 
-export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
+export const Editor = ({
+  onChange,
+  initialContent,
+  editable = true,
+}: EditorProps) => {
   const { resolvedTheme } = useTheme();
 
   // Create the editor instance
   const editor: BlockNoteEditor = useCreateBlockNote({
-    editable,
     initialContent: initialContent
       ? (JSON.parse(initialContent) as PartialBlock[])
       : undefined,
   });
 
+  useEffect(() => {
+    editor.isEditable = editable ?? true;
+  }, [editor, editable]);
+
   // Use an effect to subscribe to editor changes
   useEffect(() => {
     const unsubscribe = editor.onChange(() => {
-      onChange(JSON.stringify(editor.topLevelBlocks, null, 2));
+      onChange(JSON.stringify(editor.document, null, 2));
     });
 
     // Clean up the subscription when the component unmounts
