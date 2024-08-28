@@ -11,13 +11,15 @@ import { useEffect } from "react";
 interface EditorProps {
   onChange: (value: string) => void;
   initialContent?: string;
+  editable?: boolean;
 }
 
-export const Editor = ({ onChange, initialContent }: EditorProps) => {
+export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
   const { resolvedTheme } = useTheme();
 
   // Create the editor instance
   const editor: BlockNoteEditor = useCreateBlockNote({
+    editable,
     initialContent: initialContent
       ? (JSON.parse(initialContent) as PartialBlock[])
       : undefined,
