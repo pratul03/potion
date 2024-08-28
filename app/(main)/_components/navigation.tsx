@@ -57,6 +57,7 @@ export const Navigation = () => {
       collapse();
     }
   }, [pathname, isMobile]);
+  
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {

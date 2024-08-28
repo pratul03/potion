@@ -23,7 +23,7 @@ const Error = () => {
       />
       <h2 className="text-xl font-medium">Something went wrong</h2>
       <Button asChild>
-        <Link href="/documents" />
+        <Link href="/documents">Go Back</Link>
       </Button>
     </div>
   );
