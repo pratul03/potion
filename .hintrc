@@ -17,6 +17,12 @@
       {
         "aria-command-name": "off"
       }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
     ]
   }
 }
