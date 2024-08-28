@@ -7,6 +7,7 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 
 interface DocumentIdProps {
@@ -23,6 +24,7 @@ const DocumentIdPage = ({ params }: DocumentIdProps) => {
     []
   );
   const update = useMutation(api.documents.update);
+  const router = useRouter();
 
   const onChange = (content: string) => {
     update({
@@ -47,8 +49,9 @@ const DocumentIdPage = ({ params }: DocumentIdProps) => {
     );
   }
 
-  if (document === null) {
-    return <div>Not Found!</div>;
+  if (document === null || !document.isPublished) {
+    router.push("/error"); // Redirects to the error page
+    return null;
   }
   return (
     <div className="pb-40">

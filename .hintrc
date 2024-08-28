@@ -8,7 +8,8 @@
       {
         "ignore": [
           "overflow-y: clip",
-          "overflow-x: clip"
+          "overflow-x: clip",
+          "-webkit-text-size-adjust"
         ]
       }
     ],
