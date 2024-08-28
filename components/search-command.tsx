@@ -44,7 +44,7 @@ export const SearchCommand = () => {
   }, [toggle]);
 
   const onSelect = (id: string) => {
-    console.log(`Selected document ID: ${id}`);
+    //console.log(`Selected document ID: ${id}`); validation //check
     router.push(`/documents/${id}`);
     onClose();
   };
