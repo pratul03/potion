@@ -68,14 +68,51 @@ export const Publish = ({ initialData }: PublishProp) => {
     });
   };
 
-  const onCopy = () => {
-    navigator.clipboard.writeText(url);
+  // const onCopy = () => {
+  //   navigator.clipboard.writeText(url);
 
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 1000);
+  //   setCopied(true);
+  //   setTimeout(() => {
+  //     setCopied(false);
+  //   }, 1000);
+  // };
+  const onCopy = () => {
+    if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(url)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => {
+            setCopied(false);
+          }, 1000);
+        })
+        .catch((err) => {
+          console.error("Failed to copy: ", err);
+          alert("Copying to clipboard is not supported on this device.");
+        });
+    } else {
+      // Fallback method for older browsers or unsupported devices
+      const textArea = document.createElement("textarea");
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand("copy");
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 1000);
+      } catch (err) {
+        console.error("Fallback: Oops, unable to copy", err);
+        alert("Copying to clipboard is not supported on this device.");
+      }
+
+      document.body.removeChild(textArea);
+    }
   };
+
   return (
     <Popover>
       <PopoverTrigger>
