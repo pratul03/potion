@@ -5,7 +5,7 @@ import { Spinner } from "@/components/spinner";
 import { Button } from "@/components/ui/button";
 import { useScrollTop } from "@/hooks/use-scroll-top";
 import { cn } from "@/lib/utils";
-import { SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
 import Link from "next/link";
 import { Logo } from "./Logo";
@@ -30,9 +30,9 @@ const Navbar = () => {
                 Log in
               </Button>
             </SignInButton>
-            <SignInButton mode="modal">
+            <SignUpButton mode="modal">
               <Button size="sm">Get Potion for free.</Button>
-            </SignInButton>
+            </SignUpButton>
           </>
         )}
         {isAuthenticated && !isLoading && (
@@ -40,7 +40,7 @@ const Navbar = () => {
             <Button variant="ghost" size="sm" asChild>
               <Link href="/documents">Enter Potion</Link>
             </Button>
-            <UserButton afterSignOutUrl="/" />
+            <UserButton />
           </>
         )}
         <ModeToggle />
