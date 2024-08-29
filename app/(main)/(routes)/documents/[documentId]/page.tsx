@@ -19,8 +19,7 @@ const DocumentIdPage = ({ params }: DocumentIdProps) => {
     documentId: params.documentId,
   });
   const Editor = useMemo(
-    () => dynamic(() => import("@/components/editor"),
-      { ssr: false }),
+    () => dynamic(() => import("@/components/editor"), { ssr: false }),
     []
   );
   const update = useMutation(api.documents.update);
